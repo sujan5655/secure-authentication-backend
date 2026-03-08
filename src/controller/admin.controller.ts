@@ -161,7 +161,7 @@ class AdminController {
     }
   }
 
-  // Update user role - admin only (cannot change own role)
+ 
   async updateUserRole(req: Request, res: Response): Promise<void> {
     try {
       const adminId = (req as any).user?.id;
