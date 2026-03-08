@@ -6,8 +6,8 @@ import cors from "cors";
 import session from "express-session";
 import bodyParser from "body-parser";
 
-import app from "./src/app";
-import connectMongoDB from "./src/database/connection";
+import app from "./app";
+import connectMongoDB from "./database/connection";
 
 const server = express();
 
