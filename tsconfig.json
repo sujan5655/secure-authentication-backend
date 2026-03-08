@@ -10,7 +10,7 @@
     "skipLibCheck": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "types": ["node"]  ,
+    
      "typeRoots": ["./node_modules/@types"] // ✅ Important to fix `process` errors
   }
 }
