@@ -1,10 +1,15 @@
 // db/mongo.connection.ts
 import mongoose from 'mongoose';
 
-const MONGO_URI = 'mongodb://127.0.0.1:27017/users'; // Force IPv4
+// Read MongoDB connection string from environment (.env / Render env)
+const MONGO_URI = process.env.MONGO_URI as string;
 
 const connectMongoDB = async (): Promise<void> => {
   try {
+    if (!MONGO_URI) {
+      throw new Error('MONGO_URI is not set');
+    }
+
     await mongoose.connect(MONGO_URI); // No extra options needed in Mongoose v7+
 
     console.log('✅ Connected to MongoDB Database');
