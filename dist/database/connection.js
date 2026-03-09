@@ -14,9 +14,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 // db/mongo.connection.ts
 const mongoose_1 = __importDefault(require("mongoose"));
-const MONGO_URI = 'mongodb://127.0.0.1:27017/users'; // Force IPv4
+// Read MongoDB connection string from environment (.env / Render env)
+const MONGO_URI = process.env.MONGO_URI;
 const connectMongoDB = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        if (!MONGO_URI) {
+            throw new Error('MONGO_URI is not set');
+        }
         yield mongoose_1.default.connect(MONGO_URI); // No extra options needed in Mongoose v7+
         console.log('✅ Connected to MongoDB Database');
     }
