@@ -5,8 +5,7 @@ node_modules/
 .env
 
 # build output (optional)
-dist/
-build/
+
 
 # logs (optional)
 logs

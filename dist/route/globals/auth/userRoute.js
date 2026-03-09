@@ -1,0 +1,22 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const dashboard_controller_1 = __importDefault(require("../../../controller/dashboard.controller"));
+const auth_middleware_1 = require("../../../middleware/auth.middleware");
+const router = express_1.default.Router();
+router.use(auth_middleware_1.verifyUser);
+router.get("/profile", (req, res) => dashboard_controller_1.default.getProfile(req, res));
+router.get("/sessions", (req, res) => dashboard_controller_1.default.getSessions(req, res));
+router.post("/sessions/end-others", (req, res) => dashboard_controller_1.default.endOtherSessions(req, res));
+router.get("/security-overview", (req, res) => dashboard_controller_1.default.getSecurityOverview(req, res));
+router.get("/login-analytics", (req, res) => dashboard_controller_1.default.getLoginAnalytics(req, res));
+router.get("/security-logs", (req, res) => dashboard_controller_1.default.getSecurityLogs(req, res));
+router.get("/activity-history", (req, res) => dashboard_controller_1.default.getActivityHistory(req, res));
+router.get("/activity-history/export", (req, res) => dashboard_controller_1.default.exportActivityCsv(req, res));
+router.get("/notifications", (req, res) => dashboard_controller_1.default.getNotifications(req, res));
+router.post("/refresh-token", (req, res) => dashboard_controller_1.default.refreshToken(req, res));
+router.post("/security-lockdown", (req, res) => dashboard_controller_1.default.securityLockdown(req, res));
+exports.default = router;
