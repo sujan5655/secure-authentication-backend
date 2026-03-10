@@ -3,7 +3,7 @@ const app = express();
 import cors from "cors";
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: ["http://localhost:5173", "https://www.sujan-chaudhary.com.np"],
     credentials: true,
   })
 );
