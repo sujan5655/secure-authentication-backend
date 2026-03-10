@@ -3,7 +3,12 @@ const app = express();
 import cors from "cors";
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://www.sujan-chaudhary.com.np","https://secured-authentication-system-dm6a.vercel.app"],
+    origin: [
+      "http://localhost:5173",
+      "https://www.sujan-chaudhary.com.np",
+      "https://sujan-chaudhary.com.np",
+      "https://secured-authentication-system-dm6a.vercel.app",
+    ],
     credentials: true,
   })
 );

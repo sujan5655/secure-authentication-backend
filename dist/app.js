@@ -7,7 +7,12 @@ const express_1 = __importDefault(require("express"));
 const app = (0, express_1.default)();
 const cors_1 = __importDefault(require("cors"));
 app.use((0, cors_1.default)({
-    origin: "http://localhost:5173",
+    origin: [
+        "http://localhost:5173",
+        "https://www.sujan-chaudhary.com.np",
+        "https://sujan-chaudhary.com.np",
+        "https://secured-authentication-system-dm6a.vercel.app",
+    ],
     credentials: true,
 }));
 const express_session_1 = __importDefault(require("express-session"));
