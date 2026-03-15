@@ -26,6 +26,12 @@ app.use(express.json());
 import authRoute from "./route/globals/auth/authRoute";
 import adminRoute from "./route/globals/auth/adminRoute";
 import userRoute from "./route/globals/auth/userRoute";
+
+// Simple healthcheck route to verify backend is running
+app.get("/api/health", (_req, res) => {
+  res.json({ status: "ok", message: "Backend is running" });
+});
+
 app.use("/api", authRoute);
 app.use("/api/user", userRoute);
 app.use("/api/admin", adminRoute);

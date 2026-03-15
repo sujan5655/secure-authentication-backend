@@ -28,6 +28,10 @@ app.use(express_1.default.json());
 const authRoute_1 = __importDefault(require("./route/globals/auth/authRoute"));
 const adminRoute_1 = __importDefault(require("./route/globals/auth/adminRoute"));
 const userRoute_1 = __importDefault(require("./route/globals/auth/userRoute"));
+// Simple healthcheck route to verify backend is running
+app.get("/api/health", (_req, res) => {
+    res.json({ status: "ok", message: "Backend is running" });
+});
 app.use("/api", authRoute_1.default);
 app.use("/api/user", userRoute_1.default);
 app.use("/api/admin", adminRoute_1.default);
