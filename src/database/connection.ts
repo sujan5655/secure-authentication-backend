@@ -1,21 +1,26 @@
-// db/mongo.connection.ts
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-// Read MongoDB connection string from environment (.env / Render env)
 const MONGO_URI = process.env.MONGO_URI as string;
+
+let isConnected = false;
 
 const connectMongoDB = async (): Promise<void> => {
   try {
-    if (!MONGO_URI) {
-      throw new Error('MONGO_URI is not set');
+    if (isConnected) {
+      return;
     }
 
-    await mongoose.connect(MONGO_URI); // No extra options needed in Mongoose v7+
+    if (!MONGO_URI) {
+      throw new Error("MONGO_URI is not set");
+    }
 
-    console.log('✅ Connected to MongoDB Database');
+    const db = await mongoose.connect(MONGO_URI);
+
+    isConnected = db.connections[0].readyState === 1;
+
+    console.log("✅ Connected to MongoDB Database");
   } catch (error) {
-    console.error('❌ MongoDB Connection Failed:', error);
-    process.exit(1);
+    console.error("❌ MongoDB Connection Failed:", error);
   }
 };
 
